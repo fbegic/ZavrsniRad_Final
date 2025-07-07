@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moji oglasi | Nekretnine</title>
+  <link rel="stylesheet" href="css/mojioglasi.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Nekretnine.hr</div>
+      <ul>
+        <li><a href="dashboard.html">Početna</a></li>
+        <li><a href="dodaj-nekretninu.html">Dodaj nekretninu</a></li>
+        <li><a href="moji-oglasi.html" class="active">Moji oglasi</a></li>
+      </ul>
+      <!-- Možeš ponovo staviti user meni ovdje ako želiš -->
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h1>Moji oglasi</h1>
+      <div id="myPropertiesList">
+        <!-- Ovdje će se prikazati korisnički oglasi -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Nekretnine.hr - Sva prava pridržana</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/mojiOglasi.js"></script>
+  <script type="module" src="js/userMenu.js"></script>
+
+</body>
+</html>

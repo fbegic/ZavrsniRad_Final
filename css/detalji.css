@@ -1,0 +1,303 @@
+
+  :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --highlight-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --text-light: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #7f8c8d;
+            --bg-light: #ffffff;
+            --bg-dark: #2c3e50;
+            --bg-gray: #ecf0f1;
+            --gradient-primary: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --gradient-secondary: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            --gradient-accent: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            --shadow-small: 0 2px 8px rgba(44, 62, 80, 0.1);
+            --shadow-medium: 0 4px 20px rgba(44, 62, 80, 0.15);
+            --shadow-large: 0 8px 30px rgba(44, 62, 80, 0.2);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-light);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-small);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Detail carousel - veće slike */
+        .detail-carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 2rem;
+        }
+
+        .detail-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .detail-carousel:hover img {
+            transform: scale(1.02);
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 62, 80, 0.8);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            padding: 0.8rem;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .carousel-prev {
+            left: 15px;
+        }
+
+        .carousel-next {
+            right: 15px;
+        }
+
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background: var(--accent-color);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Property detail layout */
+        .property-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+        }
+
+        .property-detail-main {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .property-detail-sidebar {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            height: fit-content;
+        }
+
+        .property-detail h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .property-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .spec-item {
+            background: var(--bg-gray);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .spec-item h4 {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .spec-item p {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .price-highlight {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            text-align: center;
+            background: var(--bg-gray);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--success-color);
+        }
+
+        .contact-info {
+            background: var(--bg-gray);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .description {
+            margin: 2rem 0;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .description h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .status-available {
+            color: var(--success-color);
+            background: rgba(39, 174, 96, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .detail-carousel {
+                height: 300px;
+            }
+            
+            .property-detail {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1rem;
+            }
+            
+            .property-detail h1 {
+                font-size: 2rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-highlight {
+                font-size: 1.5rem;
+            }
+        }

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj nekretninu | Nekretnine</title>
+    <link rel="stylesheet" href="css/dodavanje.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Nekretnine.hr</div>
+            <ul>
+                <li><a href="dashboard.html">Početna</a></li>
+                <li><a href="dodaj-nekretninu.html" id="addPropertyLink" class="active">Dodaj nekretninu</a></li>
+            </ul>
+
+            <div class="user-menu-container" style="position: relative; display: none;" id="userMenuContainer">
+  <button id="userMenuBtn" style="background: none; border: none; cursor: pointer; padding: 0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Korisnik" class="user-icon" style="width: 32px; height: 32px; border-radius: 50%;" />
+  </button>
+
+<div id="userEmailDisplay" style="font-size: 0.85rem; color: #d8cfcf; text-align: center; margin-top: 5px;"></div>
+
+  <div id="userMenu" class="user-menu" style="display: none; position: absolute; right: 0; top: 40px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); border-radius: 8px; min-width: 160px; z-index: 1000;">
+    <a href="moji-oglasi.html" style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; color: #333; text-decoration: none;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Oglasi" style="width: 18px; margin-right: 8px; vertical-align: middle;">Moji oglasi
+    </a>
+    <button id="logoutBtn" style="width: 100%; padding: 10px 15px; border: none; background: none; text-align: left; cursor: pointer; color: #333; display: flex; align-items: center; gap: 8px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png" style="width: 18px;"> Odjava
+    </button>
+  </div>
+</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="add-property">
+            <h1>Dodaj novu nekretninu</h1>
+            <form id="addPropertyForm">
+                <div class="form-group">
+                    <label for="title">Naslov oglasa:</label>
+                    <input type="text" id="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="type">Tip nekretnine:</label>
+                    <select id="type" required>
+                        <option value="">Odaberi tip</option>
+                        <option value="stan">Stan</option>
+                        <option value="kuća">Kuća</option>
+                        <option value="zemljište">Zemljište</option>
+                        <option value="poslovni prostor">Poslovni prostor</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Lokacija:</label>
+                    <input type="text" id="location" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Cijena (€):</label>
+                    <input type="number" id="price" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="size">Veličina (m²):</label>
+                    <input type="number" id="size">
+                </div>
+                
+                <div class="form-group">
+                    <label for="rooms">Broj soba:</label>
+                    <input type="number" id="rooms">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Opis:</label>
+                    <textarea id="description" rows="5" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">Slika oglasa:</label>
+                    <input type="file" id="image" accept="image/*" multiple>
+                    <div id="imagePreview"></div>
+
+                </div>
+
+                <div class="form-group">
+    <label for="yearBuilt">Godina izgradnje:</label>
+    <input type="number" id="yearBuilt" min="1800" max="2100" placeholder="Npr. 2005">
+</div>
+
+<div class="form-group">
+    <label for="parking">Parking:</label>
+    <select id="parking">
+        <option value="">Odaberi</option>
+        <option value="Da">Da</option>
+        <option value="Ne">Ne</option>
+        <option value="Nije navedeno">Nije navedeno</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="heating">Grijanje:</label>
+    <input type="text" id="heating" placeholder="Npr. centralno, etažno...">
+</div>
+
+<div class="form-group">
+  <label for="contact">Kontakt (telefon, email ili drugo):</label>
+  <input type="text" id="contact" placeholder="Unesite kontakt informacije" required>
+</div>
+
+                
+                <button type="submit" class="btn">Objavi nekretninu</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Nekretnine.hr - Sva prava pridržana</p>
+    </footer>
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/userMenu.js"></script>
+    <script type="module" src="js/nekretnine.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nekretnine | Početna</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <nav id="mainContent" class="navbar">
+            <div class="logo">Nekretnine.hr</div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html" class="active">Početna</a></li>
+                <li><a href="dodaj-nekretninu.html">Dodaj nekretninu</a></li>
+            </ul>
+            <div id="authButtons" class="auth-buttons" style="display: none;">
+                <a href="#" id="loginTrigger" style="color: #f1f0f0;">Prijavite se </a> / <a href="#"
+                    id="registerTrigger" style="color: #f1f0f0;">Registrirajte se</a>
+            </div>
+
+            <div class="user-menu-container" style="position: relative; display: none;" id="userMenuContainer">
+                <button id="userMenuBtn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Korisnik" class="user-icon" />
+                </button>
+
+                <div id="userEmailDisplay"
+                    style="font-size: 0.85rem; color: #f1f0f0; text-align: right; margin-top: 5px;"></div>
+
+                <div id="userMenu" class="user-menu">
+                    <a href="moji-oglasi.html">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Oglasi"
+                            style="width: 18px; margin-right: 8px; vertical-align: middle;">
+                        Moji oglasi
+                    </a>
+                    <button id="logoutBtn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png" alt="Odjava"
+                            style="width: 18px; margin-right: 8px; vertical-align: middle;">
+                        Odjava
+                    </button>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- Popup pozadina -->
+    <div id="popupOverlay" class="popup-overlay"></div>
+
+    <!-- Login Popup -->
+    <div id="loginModal" class="popup-modal">
+        <div class="popup-content">
+            <h2>Prijava</h2>
+            <form id="popupLoginForm">
+                <input type="email" id="popupLoginEmail" placeholder="Email" required>
+                <input type="password" id="popupLoginPassword" placeholder="Lozinka" required>
+                <button type="submit">Prijavi se</button>
+            </form>
+            <p>Nemaš račun? <a href="#" id="openRegisterFromLogin">Registriraj se</a></p>
+        </div>
+    </div>
+
+    <!-- Register Popup -->
+    <div id="registerModal" class="popup-modal">
+        <div class="popup-content">
+            <h2>Registracija</h2>
+            <form id="popupRegisterForm">
+                <input type="email" id="popupRegisterEmail" placeholder="Email" required>
+                <input type="password" id="popupRegisterPassword" placeholder="Lozinka" required>
+                <input type="password" id="popupRegisterConfirm" placeholder="Potvrdi lozinku" required>
+                <button type="submit">Registriraj se</button>
+            </form>
+            <p>Imaš račun? <a href="#" id="openLoginFromRegister">Prijavi se</a></p>
+        </div>
+    </div>
+
+
+    <main>
+        <section class="hero">
+            <h1>Pronađite svoj savršeni dom</h1>
+            <p>Pretražite našu bazu nekretnina i pronađite ono što tražite</p>
+        </section>
+
+        <section class="filters">
+            <select id="tipNekretnine">
+                <option value="">Svi tipovi</option>
+                <option value="stan">Stan</option>
+                <option value="kuća">Kuća</option>
+                <option value="zemljište">Zemljište</option>
+            </select>
+            <input type="number" id="minCijena" placeholder="Min cijena (€)">
+            <input type="number" id="maxCijena" placeholder="Max cijena (€)">
+            <button id="filterBtn" class="btn">Filtriraj</button>
+        </section>
+
+        <section class="property-list" id="propertyList">
+            <!-- Ovdje će se dinamički učitati nekretnine -->
+        </section>
+    </main>
+
+
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Nekretnine.hr - Sva prava pridržana</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/mojiOglasi.js"></script>
+    <script type="module" src="js/userMenu.js"></script>
+    <script type="module" src="js/nekretnine.js"></script>
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+
+</html>
