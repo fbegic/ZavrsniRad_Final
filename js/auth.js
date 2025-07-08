@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   addLink.addEventListener('click', (e) => {
     if (!auth.currentUser) {
-      e.preventDefault(); // ⛔️ spriječi navigaciju
-      showModal(loginModal); // ✅ otvori popup
+      e.preventDefault(); // spriječi navigaciju
+      showModal(loginModal); // otvori popup
     }
   });
 });

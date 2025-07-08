@@ -772,3 +772,27 @@ body::before {
   }
 }
 /*dovde*/
+
+/* Prijava / Registracija Modal */
+.popup-content h2 {
+  color: #2c3e50; /* Tamna boja za naslov 'Prijava' */
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.popup-content p {
+  color: #2c3e50; /* Tamna boja za tekst 'Nemaš račun?' */
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.popup-content a {
+  color: #007bff; /* Plava poveznica */
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.popup-content a:hover {
+  color: #0056b3;
+}

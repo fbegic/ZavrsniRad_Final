@@ -70,10 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const userId = auth.currentUser?.uid;
       if (!userId) {
-        alert('Morate biti prijavljeni da biste dodali nekretninu!');
-        window.location.href = 'login.html';
-        return;
+      alert('Morate biti prijavljeni da biste dodali nekretninu!');
+      showModal(loginModal);  // koristi popup umjesto redirect
+      return;
       }
+
 
       // Očisti i parsiraj cijenu tako da prihvati npr. 250.000,00 ili 250000 ili 250000.00
       const priceRaw = document.getElementById('price')?.value || '';
