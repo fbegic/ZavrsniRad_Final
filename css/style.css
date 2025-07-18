@@ -95,7 +95,7 @@ nav ul li a.active {
 /* Hero sekcija - Elegantna i moderna */
 .hero {
     background: linear-gradient(135deg, rgba(44, 62, 80, 0.95), rgba(52, 73, 94, 0.95)), 
-                url('images/hero-bg.jpg');
+                ;
     background-size: cover;
     background-position: center;
     color: var(--text-light);
