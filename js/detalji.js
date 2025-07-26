@@ -60,21 +60,30 @@ async function loadPropertyDetails() {
     `;
 
     container.innerHTML = `
-      ${imagesHtml}
-      <h2 style="margin-top: 1rem;">${data.title || 'Nema naslova'}</h2>
-      <p><strong>Tip:</strong> ${data.type || '-'}</p>
-      <p><strong>Lokacija:</strong> ${data.location || '-'}</p>
-      <p><strong>Cijena:</strong> ${data.price ? data.price + ' €' : '-'}</p>
-      <p><strong>Broj soba:</strong> ${data.rooms || '-'}</p>
-      <p><strong>Godina izgradnje:</strong> ${data.yearBuilt || '-'}</p>
-      <p><strong>Parking:</strong> ${data.parking || '-'}</p>
-      <p><strong>Grijanje:</strong> ${data.heating || '-'}</p>
-      <p style="margin-top: 1rem;">${data.description || ''}</p>
-      <h3>Lokacija na karti</h3>
-      ${mapHtml}
-      <h3>Kontakt</h3>
-      <p>Za više informacija kontaktirajte nas na: <a href="mailto:${data.contact || 'info@nekretnine.hr'}">${data.contact || 'info@nekretnine.hr'}</a></p>
-    `;
+  ${imagesHtml}
+  <h2 style="margin-top: 1rem;">${data.title || 'Nema naslova'}</h2>
+  <p><strong>Tip:</strong> ${data.type || '-'}</p>
+  <p><strong>Lokacija:</strong> ${data.location || '-'}</p>
+  <p><strong>Cijena:</strong> ${data.price ? data.price + ' €' : '-'}</p>
+  <p><strong>Broj soba:</strong> ${data.rooms || '-'}</p>
+  <p><strong>Godina izgradnje:</strong> ${data.yearBuilt || '-'}</p>
+  <p><strong>Parking:</strong> ${data.parking || '-'}</p>
+  <p><strong>Grijanje:</strong> ${data.heating || '-'}</p>
+
+  <h3 style="margin-top: 1.5rem;">Detaljniji opis:</h3>
+  <p>${data.description || ''}</p>
+
+  <h3>Lokacija na karti</h3>
+  ${mapHtml}
+
+  <h3>Kontakt</h3>
+  <p>Za više informacija kontaktirajte nas na: 
+    <a href="mailto:${data.contact || 'info@nekretnine.hr'}">
+      ${data.contact || 'info@nekretnine.hr'}
+    </a>
+  </p>
+`;
+
 
     // Carousel logika
     let currentIndex = 0;
