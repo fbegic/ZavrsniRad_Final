@@ -20,6 +20,42 @@ let allProperties = [];  // Svi oglasi za pagination
 let currentPage = 1;
 const propertiesPerPage = 9;
 
+
+//Sakrivanje polja kad je zemljište
+document.addEventListener('DOMContentLoaded', () => {
+  const typeSelect = document.getElementById('type');
+  const yearBuiltField = document.getElementById('yearBuilt')?.closest('div');
+  const roomsField = document.getElementById('rooms')?.closest('div');
+  const parkingField = document.getElementById('parking')?.closest('div');
+  const heatingField = document.getElementById('heating')?.closest('div');
+
+  function toggleFieldsForLand() {
+    if (!typeSelect) return;
+    const isLand = typeSelect.value.toLowerCase() === 'zemljište' || typeSelect.value.toLowerCase() === 'zemljiste';
+
+    [yearBuiltField, roomsField, parkingField, heatingField].forEach(field => {
+      if (field) field.style.display = isLand ? 'none' : '';
+    });
+
+    // Ukloni ili dodaj required
+    ['yearBuilt', 'rooms', 'parking', 'heating'].forEach(id => {
+      const input = document.getElementById(id);
+      if (input) {
+        if (isLand) {
+          input.removeAttribute('required');
+        } else {
+          input.setAttribute('required', true);
+        }
+      }
+    });
+  }
+
+  if (typeSelect) {
+    typeSelect.addEventListener('change', toggleFieldsForLand);
+    toggleFieldsForLand();
+  }
+});
+
 // Prikaz preview slika za upload
 function updateImagePreview() {
   if (!imagePreview) return;
@@ -74,12 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const userId = auth.currentUser?.uid;
       if (!userId) {
-      alert('Morate biti prijavljeni da biste dodali nekretninu!');
-      showModal(loginModal);  // koristi popup umjesto redirect
-      return;
+        alert('Morate biti prijavljeni da biste dodali nekretninu!');
+        showModal(loginModal);
+        return;
       }
 
-      // Očisti i parsiraj cijenu tako da prihvati npr. 250.000,00 ili 250000 ili 250000.00
       const priceRaw = document.getElementById('price')?.value || '';
       const priceCleaned = priceRaw.replace(/\./g, '').replace(/,/g, '.');
       const price = parseFloat(priceCleaned) || 0;
@@ -91,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const uniqueSuffix = crypto.randomUUID();
         const fileName = `${userId}_${Date.now()}_${uniqueSuffix}_${sanitizeFileName(file.name)}`;
 
-        const { data, error } = await supabase.storage.from('nekretnine').upload(fileName, file);
+        const { error } = await supabase.storage.from('nekretnine').upload(fileName, file);
         if (error) {
           alert('Greška pri uploadu slike: ' + error.message);
           return;
@@ -101,17 +136,31 @@ document.addEventListener('DOMContentLoaded', () => {
         imageUrls.push(publicData.publicUrl);
       }
 
+      const type = document.getElementById('type')?.value || '';
+      let yearBuilt = document.getElementById('yearBuilt')?.value || '';
+      let rooms = document.getElementById('rooms')?.value || '';
+      let parking = document.getElementById('parking')?.value || '';
+      let heating = document.getElementById('heating')?.value || '';
+
+      // Ako je zemljište, isprazni vrijednosti
+      if (type.toLowerCase() === 'zemljište' || type.toLowerCase() === 'zemljiste') {
+        yearBuilt = '';
+        rooms = '';
+        parking = '';
+        heating = '';
+      }
+
       const nekretnina = {
         title: document.getElementById('title')?.value || '',
-        type: document.getElementById('type')?.value || '',
+        type: type,
         location: document.getElementById('location')?.value || '',
         price: price,
         size: document.getElementById('size')?.value ? Number(document.getElementById('size').value) : null,
-        rooms: document.getElementById('rooms')?.value ? Number(document.getElementById('rooms').value) : null,
+        rooms: rooms ? Number(rooms) : null,
         description: document.getElementById('description')?.value || '',
-        yearBuilt: document.getElementById('yearBuilt')?.value || '',
-        parking: document.getElementById('parking')?.value || '',
-        heating: document.getElementById('heating')?.value || '',
+        yearBuilt: yearBuilt,
+        parking: parking,
+        heating: heating,
         contact: document.getElementById('contact')?.value || '',
         userId,
         images: imageUrls,
@@ -127,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
 
   // Funkcija za kreiranje pojedinačne kartice oglasa
   function createPropertyCard(data, docId) {
@@ -324,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Učitaj inicijalno sve oglase bez filtera
-  loadFilteredProperties('', null, null);
+  loadFilteredProperties('','', null, null);
 
   // Dodaj event listener za filtriranje
   const filterBtn = document.getElementById('filterBtn');

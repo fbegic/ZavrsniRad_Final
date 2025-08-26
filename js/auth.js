@@ -36,7 +36,7 @@ onAuthStateChanged(auth, (user) => {
     authButtons?.style?.setProperty('display', 'none');
     userMenuContainer?.style?.setProperty('display', 'block');
 
-    // ➕ Prikaz emaila
+    // Prikaz emaila
     const emailDisplay = document.getElementById('userEmailDisplay');
     if (emailDisplay) {
       emailDisplay.textContent = user.email;
@@ -46,7 +46,7 @@ onAuthStateChanged(auth, (user) => {
     authButtons?.style?.setProperty('display', 'block');
     userMenuContainer?.style?.setProperty('display', 'none');
 
-    // 🧹 Očisti prikaz emaila ako postoji
+    // Očisti prikaz emaila ako postoji
     const emailDisplay = document.getElementById('userEmailDisplay');
     if (emailDisplay) {
       emailDisplay.textContent = '';

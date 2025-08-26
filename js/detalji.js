@@ -30,7 +30,7 @@ async function loadPropertyDetails() {
     let imagesHtml = '';
     if (data.images && data.images.length > 0) {
       imagesHtml = `
-        <div class="carousel" style="max-width: 600px; margin: auto;">
+        <div class="carousel" >
           ${data.images.map((url, i) => `
             <img
               src="${url}"

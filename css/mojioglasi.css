@@ -170,19 +170,7 @@ nav ul li a.active {
 }
 
 /* Dugme za brisanje */
-.btn-delete {
-    align-self: flex-start;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    margin-top: 0.8rem;
-    transition: background-color 0.3s;
-    font-weight: 600;
-}
+
 
 .btn-delete:hover {
     background-color: #c0392b;
@@ -308,4 +296,72 @@ html, body {
 
 main {
     flex: 1;
+}
+
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  display: grid; place-items: center; z-index: 9999;
+}
+.modal {
+  width: min(520px, 94vw); background: #fff; border-radius: 12px;
+  box-shadow: var(--shadow-large); padding: 1rem 1rem 1.2rem;
+}
+.modal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom: .5rem; }
+.icon-btn { background: transparent; border: 0; font-size: 1.6rem; cursor: pointer; }
+.form-row { display: grid; gap: .4rem; margin-bottom: .8rem; }
+.form-row input, .form-row textarea {
+  border: 1px solid #dfe6e9; border-radius: 8px; padding: .7rem .85rem; background:#fff; outline:none;
+}
+.form-row input:focus, .form-row textarea:focus {
+  border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(52,152,219,.15);
+}
+.form-actions { display:flex; gap: .6rem; }
+.btn { background: var(--accent-color); color:#fff; border:0; border-radius: 8px; padding:.8rem 1.2rem; cursor:pointer; }
+.btn:hover { filter: brightness(.95); }
+.btn-ghost { background: transparent; color: var(--accent-color); border:1px solid var(--accent-color); }
+.status-msg { margin-top: .6rem; font-weight: 600; }
+
+
+/* Wrapper za gumbe */
+.property-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 0.8rem;
+}
+
+/* Obriši = crveno i širi */
+.property-actions .btn-delete {
+  flex: 2;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color .2s ease;
+}
+.property-actions .btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* Uredi = plavi i uži */
+.property-actions .btn-edit {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color .2s ease;
+}
+.property-actions .btn-edit:hover {
+  background-color: #2980b9;
 }

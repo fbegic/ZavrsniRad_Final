@@ -28,6 +28,27 @@
     </section>
   </main>
 
+  <!-- Modal: Uredi cijenu i opis -->
+<div id="editModal"
+     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); 
+            align-items:center; justify-content:center;">
+  <form id="editForm" style="background:#fff; padding:1rem; border-radius:8px; width:300px;">
+    <input type="hidden" name="id">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:.5rem;">
+      <h3 style="margin:.2rem 0;">Uredi oglas</h3>
+      <button type="button" id="editClose" aria-label="Zatvori"
+              style="background:transparent;border:0;font-size:20px;cursor:pointer;">×</button>
+    </div>
+    <label>Cijena (€)</label>
+    <input type="number" name="price" required><br>
+    <label>Detaljni opis</label>
+    <textarea name="description" rows="4"></textarea><br>
+    <button type="submit">Spremi</button>
+    <button type="button" id="editCancel">Odustani</button>
+  </form>
+</div>
+
+
   <footer>
     <p>&copy; 2025 Nekretnine.hr - Sva prava pridržana</p>
   </footer>
